@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from sqlalchemy.types import JSON
 
-def populate_database(engine, name_table, name_file):
+def populate_table_database(engine, name_table, name_file):
 
     file_type = name_file.split(".")[-1]
 
