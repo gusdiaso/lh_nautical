@@ -23,4 +23,5 @@ try:
 except Exception as e:
   print("Erro ao carregar dados para banco!", e)
 
-# ERRO: Erro ao carregar dados para banco! Execution failed on sql 'INSERT INTO custos_importacao...'
+
+# ERRO: Erro ao carregar dados para banco! Execution failed on sql 'INSERT INTO custos_importacao....'
