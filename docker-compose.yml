@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+    db_lh_nauticals:
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: lh_nauticals
+        ports:
+            - '5432:5432'
