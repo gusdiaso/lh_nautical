@@ -7,10 +7,10 @@ def populate_table_database(engine, name_table, name_file):
     file_type = name_file.split(".")[-1]
 
     if file_type == "csv":
-        df = pd.read_csv(f"data/{name_file}")
+        df = pd.read_csv(f"data/raw/{name_file}")
 
     elif file_type == "json":
-        df = pd.read_json(f"data/{name_file}")
+        df = pd.read_json(f"data/raw/{name_file}")
 
     else:
         raise ValueError(f"Formato de arquivo '{file_type}' não reconhecido. Use CSV ou JSON.")
