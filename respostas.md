@@ -140,3 +140,23 @@ A média móvel assume que o futuro se comporta como a média recente do passado
 # Questão 8
 
 ## Questão 8.1
+
+[CÓDIGO]
+
+## Questão 8.2
+
+94
+
+## Questão 8.3
+
+**1. Como a matriz foi construída?**
+
+As vendas foram agrupadas por cliente e produto, marcando com 1 cada combinação existente — independente de quantas vezes o cliente comprou aquele produto. Em seguida, os dados foram pivotados em uma grade onde cada linha representa um cliente e cada coluna representa um produto. Combinações onde o cliente nunca comprou o produto recebem valor 0. O resultado é uma matriz binária de presença e ausência que representa o comportamento de compra de toda a base de clientes.
+
+**2. O que significa a similaridade de cosseno nesse contexto?**
+
+Cada produto é representado como um vetor de clientes — onde cada posição indica se aquele cliente comprou ou não o produto. A similaridade de cosseno mede o ângulo entre dois vetores: quanto mais clientes em comum dois produtos tiverem, menor o ângulo e maior a similaridade. Um valor de 1.0 significa que os dois produtos foram comprados exatamente pelos mesmos clientes. Um valor de 0.0 significa que nenhum cliente comprou os dois produtos. No contexto da recomendação, um produto com alta similaridade ao GPS Garmin é aquele que tende a ser comprado pelo mesmo perfil de cliente — tornando-o um candidato natural para a vitrine "Quem comprou isso, também levou".
+
+**3. Uma limitação desse método de recomendação.**
+
+O método é baseado apenas em padrões históricos de co-ocorrência — ele não considera o contexto da compra, a ordem das transações, nem a relevância dos produtos entre si. Além disso, sofre do problema de cold start: produtos novos ou com poucas vendas têm vetores esparsos, o que distorce a similaridade e pode gerar recomendações pouco confiáveis. Para uma base pequena como a da LH Nautical, com apenas 49 clientes e 150 produtos, muitas combinações nunca ocorreram — o que limita a qualidade das recomendações.
