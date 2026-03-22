@@ -116,3 +116,27 @@ Sem o calendário, esses dias seriam ignorados e a média ficaria artificialment
 # Questão 7
 
 ## Questão 7.1
+
+[CÓDIGO]
+
+## Questão 7.2
+
+0 vendas
+
+## Questão 7.3
+
+**1. Como o baseline foi construído?**
+
+A previsão foi calculada como a média das vendas diárias dos 7 dias anteriores — sem incluir o próprio dia previsto. O histórico de vendas foi primeiro transformado em uma série diária completa, com zeros nos dias sem venda, garantindo que a média refletisse o comportamento real do produto. A janela desliza dia a dia: para prever o dia 8, usa os dias 1 a 7; para prever o dia 9, usa os dias 2 a 8, e assim por diante.
+
+**2. Como evitou data leakage?**
+
+O `shift(1)` foi aplicado antes do `rolling` — deslocando a série um dia para frente antes de calcular a média. Isso garante que a previsão de cada dia usa apenas os 7 dias estritamente anteriores, nunca o valor do próprio dia.
+
+**3. Uma limitação do modelo proposto.**
+
+A média móvel assume que o futuro se comporta como a média recente do passado — ignorando sazonalidade, tendências de longo prazo e eventos externos. Para um produto náutico como o Motor de Popa Yamaha, cuja demanda pode variar significativamente entre verão e inverno, esse modelo tende a reagir tarde às mudanças de padrão, suavizando picos e vales que seriam críticos para o planejamento de estoque.
+
+# Questão 8
+
+## Questão 8.1

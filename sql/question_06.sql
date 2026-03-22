@@ -43,5 +43,5 @@ SELECT
 FROM dim_calendario d
 LEFT JOIN vendas_diarias v
     ON v.data = d.data
-GROUP BY d.dia_semana, d.num_dia_semana
+GROUP BY d.dia_semana
 ORDER BY ROUND(AVG(COALESCE(v.total_vendas, 0))::numeric, 2);
