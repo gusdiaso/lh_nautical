@@ -4,10 +4,10 @@
 WITH metricas_clientes AS (
     SELECT
         v.id_client,
-        SUM(v.total)                        AS faturamento_total,
-        COUNT(v.id)                         AS frequencia,
-        SUM(v.total) / COUNT(v.id)          AS ticket_medio,
-        COUNT(DISTINCT p.actual_category)   AS diversidade_categorias
+        SUM(v.total) AS faturamento_total,
+        COUNT(v.id) AS frequencia,
+        SUM(v.total) / COUNT(v.id) AS ticket_medio,
+        COUNT(DISTINCT p.actual_category) AS diversidade_categorias
     FROM vendas_processed v
     JOIN produtos_processed p
         ON p.code = v.id_product
@@ -20,14 +20,15 @@ clientes_elite AS (
     ORDER BY ticket_medio DESC, id_client ASC
     LIMIT 10
 )
+
 SELECT
     e.id_client,
     cl.full_name,
     cl.cidade,
     cl.estado,
-    ROUND(e.faturamento_total::numeric, 2)  AS faturamento_total,
+    ROUND(e.faturamento_total::numeric, 2) AS faturamento_total,
     e.frequencia,
-    ROUND(e.ticket_medio::numeric, 2)       AS ticket_medio,
+    ROUND(e.ticket_medio::numeric, 2) AS ticket_medio,
     e.diversidade_categorias
 FROM clientes_elite e
 JOIN clientes_crm_processed cl
@@ -39,10 +40,10 @@ ORDER BY ticket_medio DESC, id_client ASC;
 WITH metricas_clientes AS (
     SELECT
         v.id_client,
-        SUM(v.total)                        AS faturamento_total,
-        COUNT(v.id)                         AS frequencia,
-        SUM(v.total) / COUNT(v.id)          AS ticket_medio,
-        COUNT(DISTINCT p.actual_category)   AS diversidade_categorias
+        SUM(v.total) AS faturamento_total,
+        COUNT(v.id) AS frequencia,
+        SUM(v.total) / COUNT(v.id) AS ticket_medio,
+        COUNT(DISTINCT p.actual_category) AS diversidade_categorias
     FROM vendas_processed v
     JOIN produtos_processed p
         ON p.code = v.id_product

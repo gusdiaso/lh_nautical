@@ -96,3 +96,23 @@ Após identificar os 10 clientes com maior ticket médio, as vendas foram filtra
 # Questão 6
 
 ## Questão 6.1
+
+[SQL]
+
+## Questão 6.2
+
+Domingo. 3319503.57
+
+## Questão 6.3
+
+**1. Por que é necessário utilizar uma tabela de datas (calendário) em vez de agrupar diretamente a tabela de vendas?**
+
+A tabela de vendas só contém registros nos dias em que houve transações — dias sem venda simplesmente não existem nela. Ao agrupar diretamente, o banco de dados considera apenas os dias com movimento, ignorando os dias em que a loja esteve aberta mas não vendeu nada. O calendário resolve isso gerando todas as datas do período, garantindo que cada dia — com ou sem venda — entre no cálculo. Sem ele, a média é calculada sobre uma base menor do que a real, produzindo resultados inflados.
+
+**2. O que aconteceria com a média de vendas se um dia da semana tivesse muitos dias sem nenhuma venda registrada?**
+
+Sem o calendário, esses dias seriam ignorados e a média ficaria artificialmente alta — exatamente o erro cometido pelo estagiário. Por exemplo: se das 8 terças-feiras do período, 4 não tiveram venda, o agrupamento direto calcularia a média sobre apenas 4 dias, não 8. Com o calendário e o `COALESCE`, os 4 dias sem venda entram com valor zero, dividindo o total por 8 e produzindo a média real. Quanto mais dias sem venda um dia da semana tiver, maior será a distorção causada pela ausência do calendário.
+
+# Questão 7
+
+## Questão 7.1

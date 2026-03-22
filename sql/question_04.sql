@@ -18,12 +18,12 @@ WITH custo_por_transacao AS (
 
 SELECT
     id_product,
-    ROUND(SUM(receita)::numeric, 2)                                           AS receita_total,
-    ROUND(SUM(CASE WHEN prejuizo > 0 THEN prejuizo ELSE 0 END)::numeric, 2)   AS prejuizo_total,
+    ROUND(SUM(receita)::numeric, 2) AS receita_total,
+    ROUND(SUM(CASE WHEN prejuizo > 0 THEN prejuizo ELSE 0 END)::numeric, 2) AS prejuizo_total,
     ROUND(
         (SUM(CASE WHEN prejuizo > 0 THEN prejuizo ELSE 0 END) /
          NULLIF(SUM(receita), 0) * 100)::numeric, 2
-    )                                                                      AS percentual_perda
+    ) AS percentual_perda
 FROM custo_por_transacao
 GROUP BY id_product
 HAVING SUM(CASE WHEN prejuizo > 0 THEN prejuizo ELSE 0 END) > 0
