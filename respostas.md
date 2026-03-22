@@ -68,3 +68,31 @@ Quando positivo, o custo de importação superou o valor recebido pela venda.
 - Custo vigente = último `usd_price` com `start_date ≤ sale_date` — sem interpolação
 - Produtos sem histórico anterior à data da venda foram desconsiderados
 - Impostos e frete ignorados conforme premissa — o prejuízo real pode ser ainda maior
+
+# Questão 5
+
+## Questão 5.1
+
+[SQL]
+
+## Questão 5.2
+
+propulsão
+
+## Questão 5.3
+
+**1. Como você realizou a limpeza das categorias?**
+
+As categorias apresentavam 39 variações para apenas 3 categorias reais. Para normalizar, foram extraídos todos os valores únicos da coluna `actual_category` e criado um dicionário mapeando cada variação para sua categoria correta — por exemplo, `"Ancorajen"`, `"Encoragem"` e `"A N C O R A G E M"` foram todas mapeadas para `"ancoragem"`. O mapeamento foi assistido por IA para garantir que nenhuma variação fosse esquecida. Com o dicionário completo, o `map()` foi aplicado sobre a coluna, substituindo cada valor pela categoria padronizada correspondente.
+
+**2. Qual lógica utilizou para filtrar os clientes com diversidade mínima?**
+
+Após cruzar as vendas com o catálogo de produtos, foi contado o número de categorias distintas compradas por cada cliente. Somente clientes que compraram produtos de pelo menos 3 categorias diferentes foram considerados no ranking — garantindo que o critério de fidelidade reflita não apenas volume de gasto, mas também amplitude de consumo dentro da loja.
+
+**3. Como garantiu que a contagem de itens refletisse apenas os Top 10?**
+
+Após identificar os 10 clientes com maior ticket médio, as vendas foram filtradas para incluir exclusivamente as transações desse grupo. Somente então foi feita a agregação por categoria — garantindo que o resultado represente o comportamento de compra específico dos clientes elite, sem contaminação do restante da base.
+
+# Questão 6
+
+## Questão 6.1
