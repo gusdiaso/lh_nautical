@@ -63,5 +63,5 @@ ax.set_axisbelow(True)
 plt.xticks(rotation=30)
 
 plt.tight_layout()
-plt.savefig('./reports/previsao_demanda.png', dpi=150, bbox_inches='tight')
+plt.savefig('./docs/reports/previsao_demanda.png', dpi=150, bbox_inches='tight')
 plt.show()
